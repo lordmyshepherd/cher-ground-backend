@@ -10,7 +10,6 @@ import { RetailerVO } from "data/vo/RetailerVO";
 import { RetailerDetailVO } from "data/vo/RetailerDetailVO";
 import { OrderFormatVO } from "data/vo/OrderFormatVO"
 import { OrderFormatItemVO } from "data/vo/OrderFormatItemVO";
-import { Entity } from "typeorm";
 
 import { RetailerAddressVO } from "data/vo/RetailerAddressVO";
 import { RetailerPhoneNumberVO } from "data/vo/RetailerPhoneNumberVO";
@@ -79,15 +78,17 @@ class RetailerRepositoryImpl implements RetailerRepository {
         // retailer -> retailerVO
 
         //retailerDao(실제로 DB에 retailerVO를 저장하는 로직을 가지고 있는 class)에서 saveRetailer 함수를 호출한 후에 vo변수에 할당.
-        const vo: Promise<boolean> = this.retailerDao.saveRetailer(this.VOMapper(retailer));
+        const retailerVo = this.VOMapper(retailer);
+        console.log(retailerVo);
+        const vo: Promise<boolean> = this.retailerDao.saveRetailer(retailerVo);
 
         return new Promise((resolve, reject) => {
             vo
-            .then((res) => {
-                //resolve(res);
-                this.retailerDao.saveRetailer(this.VOMapper(retailer))
-                .then((res: boolean) => { resolve(res); })
-            })
+                .then((res) => {
+                    resolve(res);
+                    // this.retailerDao.saveRetailer(this.VOMapper(retailer))
+                    // .then((res: boolean) => { resolve(res); })
+                })
         })
     }
 
@@ -111,7 +112,7 @@ class RetailerRepositoryImpl implements RetailerRepository {
 
         const orderFormat: OrderFormatVO = {
             id: entity.detail.format.id,
-            formatItems: null  
+            formatItems: undefined  
         }
 
         let orderFormatItems : Array<OrderFormatItemVO> = new Array();
@@ -188,7 +189,7 @@ class RetailerRepositoryImpl implements RetailerRepository {
         const retailerVO: RetailerVO = {
             id: vo.id,
             name: vo.name,
-            detail: null
+            detail: undefined
         }
 
         return retailerVO;

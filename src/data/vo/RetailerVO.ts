@@ -11,7 +11,7 @@ export class RetailerVO {
     @Column()
     name: string;
 
-    @OneToOne(type => RetailerDetailVO)
+    @OneToOne(type => RetailerDetailVO, {cascade: true})
     @JoinColumn()
     detail: RetailerDetailVO;
     

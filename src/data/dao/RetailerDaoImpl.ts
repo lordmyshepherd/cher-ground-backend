@@ -1,8 +1,9 @@
 import { injectable, inject } from "inversify";
 
-import { RetailerDao } from "data/interactor/repository/index";
+import { RetailerDao } from "data/interactor/repository";
 import { getManager } from "typeorm";
 import { RetailerVO } from "data/vo/RetailerVO";
+import { RetailerDetailVO } from "data/vo/RetailerDetailVO";
 // import { Retailer } from "data/domain/entity";
 
 
@@ -16,7 +17,7 @@ export default class RetailerDaoOImpl implements RetailerDao {
 
     saveRetailer(retailer: RetailerVO): Promise<boolean> {
         const retailerVoRepository = getManager().getRepository(RetailerVO);
-        
+        console.log(retailer);
         return new Promise((resolve, reject) => {
             retailerVoRepository.save(retailer)
                 .then((res) => {
@@ -26,5 +27,4 @@ export default class RetailerDaoOImpl implements RetailerDao {
                 })
         })
     }
-    
 }

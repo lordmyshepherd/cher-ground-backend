@@ -18,27 +18,27 @@ export class RetailerDetailVO {
     // @OneToOne(type => RetailerVO, retailerVO => retailerVO.detail)
     // retailer: RetailerVO;
 
-    @OneToOne(type => OrderFormatVO)
+    @OneToOne(type => OrderFormatVO, {cascade: true})
     @JoinColumn()
     format: OrderFormatVO;
 
-    @OneToOne(type => RetailerAddressVO)
+    @OneToOne(type => RetailerAddressVO, {cascade: true})
     @JoinColumn()
     address: RetailerAddressVO;
 
-    @OneToOne(type => RetailerPhoneNumberVO)
+    @OneToOne(type => RetailerPhoneNumberVO, {cascade: true})
     @JoinColumn()
     phoneNumber: RetailerPhoneNumberVO; 
 
-    @OneToOne(type => RetailerEmailVO)
+    @OneToOne(type => RetailerEmailVO, {cascade: true})
     @JoinColumn()
     email: RetailerEmailVO; 
 
-    @OneToOne(type => BusinessInfoVO)
+    @OneToOne(type => BusinessInfoVO, {cascade: true})
     @JoinColumn()
     businessInfo: BusinessInfoVO;
 
-    @OneToOne(type => BankInfoVO)
+    @OneToOne(type => BankInfoVO, {cascade: true})
     @JoinColumn()
     bankInfo: BankInfoVO;
 

@@ -78,6 +78,7 @@ class App {
             }
           ]},
           address: {
+            id: "1",
             office: "cherground",
             warehouse: "wecode"
           },
@@ -117,9 +118,7 @@ class App {
       .then((res) => {
         console.log("retailer 정보를 데이터베이스에 저장했다면 res의 값은 true");
         console.log(res)
-        response.send("SUCESS");
-      }).catch((err) => {
-        console.log("retailer 정보를 데이터베이스에 저장하는데 실패했다.")
+        response.send(res)
       })
     })
   }
