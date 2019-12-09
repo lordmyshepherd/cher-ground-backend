@@ -1,0 +1,24 @@
+{
+   "type": "mysql",
+   "host": "localhost",
+   "port": 3306,
+   "username": "root",
+   "password": "wnsgks0113",
+   "database": "sellup",
+   "synchronize": true,
+   "logging": true,
+   "entities": [
+      "src/data/vo/**/*.ts"
+   ],
+   "migrations": [
+      "src/data/migration/**/*.ts"
+   ],
+   "subscribers": [
+      "src/data/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/data/vo",
+      "migrationsDir": "src/data/migration",
+      "subscribersDir": "src/data/subscriber"
+   }
+}
